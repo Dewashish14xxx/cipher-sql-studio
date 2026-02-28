@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Attempt = require('../models/Attempt');
-const { protect } = require('../middleware/auth');
+const { requireAuth } = require('../middleware/auth');
 
 // GET /api/history/:assignmentId
 // Get the query history for a specific assignment for the logged-in user
-router.get('/:assignmentId', protect, async (req, res) => {
+router.get('/:assignmentId', requireAuth, async (req, res) => {
     try {
         const history = await Attempt.find({
             userId: req.user.id,
