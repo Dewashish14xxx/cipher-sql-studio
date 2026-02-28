@@ -107,6 +107,31 @@ cd frontend && npm run dev
 
 Open http://localhost:5173
 
+---
+
+## 🚀 Deployment Guide (Public Live Link)
+
+To get a public link to submit for your assignment, you can easily deploy this repository for free using **Render** (for the Backend API) and **Vercel** (for the Frontend UI).
+
+### Part 1: Deploy Backend (Render)
+1. Push this code to a public GitHub repository.
+2. Go to [Render.com](https://render.com) and log in.
+3. Click **New +** and select **Blueprint**.
+4. Connect your GitHub repository. Render will automatically read the `render.yaml` file and set up a Web Service.
+5. In the Render Dashboard, click on your new web service, go to **Environment**, and fill in the missing secrets (`MONGODB_URI`, `PG_HOST`, `GEMINI_API_KEY`, etc.).
+6. Once deployed, copy the Render URL (e.g., `https://cipher-sql-backend.onrender.com`).
+
+### Part 2: Deploy Frontend (Vercel)
+1. Go to [Vercel.com](https://vercel.com) and log in.
+2. Click **Add New** → **Project** and import your GitHub repository.
+3. Before clicking deploy, configure the **Framework Preset** to `Vite`.
+4. Open **Environment Variables** and add:
+   - Name: `VITE_API_URL`
+   - Value: `YOUR_RENDER_URL/api` *(e.g., `https://cipher-sql-backend.onrender.com/api`)*
+5. Click **Deploy**. Vercel will automatically read `vercel.json` and host your frontend.
+
+You now have a live public link you can share and submit!
+
 ## API Endpoints
 
 | Method | Path | Description |
