@@ -9,6 +9,8 @@ const hintRouter = require('./routes/hint');
 const authRouter = require('./routes/auth');
 const progressRouter = require('./routes/progress');
 const historyRouter = require('./routes/history');
+const userRouter = require('./routes/userRoutes');
+const leaderboardRouter = require('./routes/leaderboardRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
@@ -27,6 +29,8 @@ app.use('/api/hint', hintRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/progress', progressRouter);
 app.use('/api/history', historyRouter);
+app.use('/api/users', userRouter);
+app.use('/api/leaderboard', leaderboardRouter);
 
 // 404
 app.use((req, res) => res.status(404).json({ success: false, error: 'Route not found' }));

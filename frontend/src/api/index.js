@@ -22,3 +22,6 @@ export const login = (data) => API.post('/auth/login', data);
 export const getProgress = () => API.get('/progress');
 export const saveProgress = (assignmentId) => API.post(`/progress/${assignmentId}`);
 export const getHistory = (assignmentId) => API.get(`/history/${assignmentId}`);
+export const getLeaderboard = () => API.get('/leaderboard');
+export const getUserProfile = () => API.get('/users/profile');
+export const updateUserProfile = (data) => API.put('/users/profile', data);

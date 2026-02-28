@@ -1,17 +1,46 @@
-// Color Palette
-$color-bg: #0d0e1a;
-$color-bg-2: #12142a;
-$color-surface: #1a1d35;
-$color-surface-2: #222645;
-$color-border: #2e3260;
-$color-primary: #7c6af7;
-$color-primary-hover: #9585ff;
-$color-primary-glow: rgba(124, 106, 247, 0.18);
+:root[data-theme="dark"] {
+    --color-bg: #0d0e1a;
+    --color-bg-2: #12142a;
+    --color-surface: #1a1d35;
+    --color-surface-2: #222645;
+    --color-border: #2e3260;
+    --color-primary: #7c6af7;
+    --color-primary-hover: #9585ff;
+    --color-primary-glow: rgba(124, 106, 247, 0.18);
+    --color-text: #e8eaff;
+    --color-text-muted: #9094c0;
+    --color-text-dim: #555980;
+}
+
+:root[data-theme="light"] {
+    --color-bg: #f5f6fa;
+    --color-bg-2: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-2: #eef0f7;
+    --color-border: #d7dbe9;
+    --color-primary: #6350f5;
+    --color-primary-hover: #523de1;
+    --color-primary-glow: rgba(99, 80, 245, 0.15);
+    --color-text: #1d1e2e;
+    --color-text-muted: #64688b;
+    --color-text-dim: #8b8ea8;
+}
+
+// Map variables to CSS vars
+$color-bg: var(--color-bg);
+$color-bg-2: var(--color-bg-2);
+$color-surface: var(--color-surface);
+$color-surface-2: var(--color-surface-2);
+$color-border: var(--color-border);
+$color-primary: var(--color-primary);
+$color-primary-hover: var(--color-primary-hover);
+$color-primary-glow: var(--color-primary-glow);
+$color-text: var(--color-text);
+$color-text-muted: var(--color-text-muted);
+$color-text-dim: var(--color-text-dim);
+
 $color-accent: #00d4aa;
 $color-accent-hover: #00f0c0;
-$color-text: #e8eaff;
-$color-text-muted: #9094c0;
-$color-text-dim: #555980;
 $color-success: #22d3a8;
 $color-error: #f4607a;
 $color-warning: #f5a623;

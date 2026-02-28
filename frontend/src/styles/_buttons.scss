@@ -32,7 +32,7 @@
         }
 
         &:active:not(:disabled) {
-            transform: translateY(0);
+            transform: translateY(1px) scale(0.98);
         }
     }
 
@@ -62,7 +62,7 @@
         }
 
         &:active:not(:disabled) {
-            transform: translateY(0);
+            transform: translateY(1px) scale(0.98);
         }
     }
 
