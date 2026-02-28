@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const UserProgress = require('../models/UserProgress');
-const { protect } = require('../middleware/auth');
+const { requireAuth } = require('../middleware/auth');
 
 // GET /api/progress
 // Get all completed assignments for the logged-in user
-router.get('/', protect, async (req, res) => {
+router.get('/', requireAuth, async (req, res) => {
     try {
         const progress = await UserProgress.find({ userId: req.user.id })
             .select('assignmentId completedAt')
@@ -22,7 +22,7 @@ router.get('/', protect, async (req, res) => {
 
 // POST /api/progress/:assignmentId
 // Mark an assignment as completed for the logged-in user
-router.post('/:assignmentId', protect, async (req, res) => {
+router.post('/:assignmentId', requireAuth, async (req, res) => {
     try {
         // Upsert to handle if they mark it completed multiple times
         await UserProgress.findOneAndUpdate(
