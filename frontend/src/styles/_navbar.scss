@@ -1,0 +1,72 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.navbar {
+    @include flex-between;
+    padding: $space-md $space-lg;
+    background: rgba($color-bg-2, 0.9);
+    border-bottom: 1px solid $color-border;
+    backdrop-filter: blur(16px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    &__brand {
+        @include flex-center;
+        gap: $space-sm;
+        text-decoration: none;
+
+        &-logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, $color-primary, $color-accent);
+            border-radius: $radius-md;
+            @include flex-center;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: white;
+            letter-spacing: -0.05em;
+        }
+
+        &-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: $color-text;
+
+            span {
+                color: $color-primary;
+            }
+
+            @include respond-to(sm) {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    &__nav {
+        @include flex-center;
+        gap: $space-md;
+    }
+
+    &__user {
+        @include flex-center;
+        gap: $space-sm;
+        background: $color-surface;
+        border: 1px solid $color-border;
+        border-radius: $radius-full;
+        padding: $space-xs $space-md;
+        font-size: 0.85rem;
+        color: $color-text-muted;
+
+        &-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, $color-primary, $color-accent);
+            @include flex-center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+        }
+    }
+}

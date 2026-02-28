@@ -1,0 +1,128 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.assignment-card {
+    @include glass-card;
+    @include glow-hover;
+    @include flex-col;
+    padding: $space-lg;
+    gap: $space-md;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--diff-color, #{$color-primary});
+        border-radius: $radius-sm 0 0 $radius-sm;
+        transition: width 0.2s ease;
+    }
+
+    &:hover::before {
+        width: 5px;
+    }
+
+    &--completed {
+        border-color: rgba($color-easy, 0.3);
+        background: rgba($color-easy, 0.05);
+
+        &::before {
+            background: $color-easy;
+        }
+
+        .assignment-card__check {
+            margin-left: $space-sm;
+            font-size: 0.9rem;
+        }
+    }
+
+    &__header {
+        @include flex-between;
+        gap: $space-sm;
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-text;
+        flex: 1;
+
+        @include respond-to(sm) {
+            font-size: 1.05rem;
+        }
+    }
+
+    &__badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: $space-xs $space-sm;
+        border-radius: $radius-full;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+
+        &--easy {
+            background: rgba($color-easy, 0.15);
+            color: $color-easy;
+            border: 1px solid rgba($color-easy, 0.3);
+        }
+
+        &--medium {
+            background: rgba($color-medium, 0.15);
+            color: $color-medium;
+            border: 1px solid rgba($color-medium, 0.3);
+        }
+
+        &--hard {
+            background: rgba($color-hard, 0.15);
+            color: $color-hard;
+            border: 1px solid rgba($color-hard, 0.3);
+        }
+    }
+
+    &__description {
+        font-size: 0.875rem;
+        color: $color-text-muted;
+        line-height: 1.55;
+        flex: 1;
+    }
+
+    &__footer {
+        @include flex-between;
+        font-size: 0.8rem;
+        color: $color-text-dim;
+        border-top: 1px solid $color-border;
+        padding-top: $space-md;
+    }
+
+    &__concepts {
+        @include flex-center;
+        gap: $space-xs;
+        flex-wrap: wrap;
+    }
+
+    &__concept-tag {
+        background: $color-surface-2;
+        color: $color-text-muted;
+        padding: 2px $space-xs;
+        border-radius: $radius-sm;
+        font-size: 0.7rem;
+        font-family: $font-mono;
+    }
+
+    &__arrow {
+        color: $color-primary;
+        font-size: 1.2rem;
+        transition: transform 0.2s ease;
+    }
+
+    &:hover &__arrow {
+        transform: translateX(4px);
+    }
+}

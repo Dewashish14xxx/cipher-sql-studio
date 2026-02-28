@@ -1,0 +1,326 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Attempt page overall layout
+.attempt-page {
+    @include flex-col;
+    min-height: calc(100vh - 65px);
+
+    // Mobile: stacked layout
+    &__top {
+        @include flex-col;
+        gap: 0;
+        flex: 1;
+
+        @include respond-to(md) {
+            flex-direction: row;
+            overflow: hidden;
+            height: calc(100vh - 65px);
+        }
+    }
+
+    // Left sidebar - question + schema
+    &__sidebar {
+        @include flex-col;
+        background: $color-bg-2;
+        border-right: 1px solid $color-border;
+        overflow-y: auto;
+        @include custom-scrollbar;
+
+        @include respond-to(md) {
+            width: 320px;
+            min-width: 280px;
+            max-width: 380px;
+            flex-shrink: 0;
+        }
+
+        @include respond-to(lg) {
+            width: 360px;
+        }
+    }
+
+    // Right main panel - editor + results
+    &__main {
+        @include flex-col;
+        flex: 1;
+        overflow: hidden;
+        min-height: 0;
+    }
+
+    // Back to list link
+    &__back {
+        @include flex-center;
+        gap: $space-sm;
+        width: fit-content;
+        padding: $space-md $space-lg;
+        font-size: 0.85rem;
+        color: $color-text-muted;
+        text-decoration: none;
+        border-bottom: 1px solid $color-border;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+// Question panel inside sidebar
+.question-panel {
+    @include flex-col;
+    gap: $space-md;
+    padding: $space-lg;
+    border-bottom: 1px solid $color-border;
+
+    &__header {
+        @include flex-between;
+        flex-wrap: wrap;
+        gap: $space-sm;
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-text;
+        flex: 1;
+
+        @include respond-to(sm) {
+            font-size: 1.05rem;
+        }
+    }
+
+    &__description {
+        font-size: 0.85rem;
+        color: $color-text-muted;
+        line-height: 1.65;
+        white-space: pre-wrap;
+    }
+
+    &__concepts {
+        @include flex-center;
+        gap: $space-xs;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    &__concept {
+        font-size: 0.7rem;
+        font-family: $font-mono;
+        padding: 2px $space-sm;
+        background: rgba($color-primary, 0.1);
+        border: 1px solid rgba($color-primary, 0.25);
+        border-radius: $radius-full;
+        color: $color-primary;
+    }
+
+    &__label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $color-text-dim;
+        font-weight: 600;
+        margin-bottom: $space-xs;
+    }
+}
+
+// Editor area
+.editor-section {
+    @include flex-col;
+    flex: 1 1 auto; // Changed to allow growing and shrinking
+    border-bottom: 1px solid $color-border;
+    min-height: 300px; // Ensure there's a reasonable minimum height
+
+    &__header {
+        @include flex-between;
+        padding: $space-sm $space-md;
+        background: $color-surface;
+        border-bottom: 1px solid $color-border;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        gap: $space-sm;
+    }
+
+    &__title {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $color-text-muted;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        @include flex-center;
+        gap: $space-xs;
+    }
+
+    &__actions {
+        @include flex-center;
+        gap: $space-sm;
+    }
+
+    &__monaco {
+        flex: 1 1 auto; // Fill the remaining space
+        height: 100%; // Ensure child Monaco container takes full height
+    }
+}
+
+// Results section
+.results-section {
+    @include flex-col;
+    background: $color-bg;
+    min-height: 160px;
+    max-height: 40vh;
+    overflow: hidden;
+
+    @include respond-to(md) {
+        max-height: 35vh;
+    }
+
+    &__header {
+        @include flex-between;
+        padding: $space-sm $space-md;
+        background: $color-surface;
+        border-top: 1px solid $color-border;
+        flex-shrink: 0;
+    }
+
+    &__title {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $color-text-muted;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    &__meta {
+        font-size: 0.75rem;
+        color: $color-text-dim;
+    }
+
+    &__body {
+        flex: 1;
+        overflow: auto;
+        @include custom-scrollbar;
+    }
+
+    &__empty {
+        @include flex-center;
+        flex-direction: column;
+        gap: $space-sm;
+        height: 100px;
+        color: $color-text-dim;
+        font-size: 0.875rem;
+    }
+
+    &__error {
+        padding: $space-md $space-lg;
+        background: rgba($color-error, 0.08);
+        border-top: 2px solid $color-error;
+        color: $color-error;
+        font-size: 0.85rem;
+        font-family: $font-mono;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+}
+
+// Results table
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+
+    &__head {
+        position: sticky;
+        top: 0;
+        background: $color-surface-2;
+    }
+
+    &__th {
+        padding: $space-sm $space-md;
+        text-align: left;
+        font-weight: 600;
+        color: $color-text-muted;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid $color-border;
+        white-space: nowrap;
+    }
+
+    &__td {
+        padding: $space-sm $space-md;
+        border-bottom: 1px solid rgba($color-border, 0.5);
+        color: $color-text;
+        font-family: $font-mono;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        max-width: 280px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    tr:hover td {
+        background: rgba($color-primary, 0.05);
+    }
+
+    &__null {
+        color: $color-text-dim;
+        font-style: italic;
+    }
+}
+
+// Hint panel
+.hint-panel {
+    padding: $space-md $space-lg;
+    border-top: 1px solid $color-border;
+    background: $color-bg-2;
+
+    &__toggle {
+        @include flex-between;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 0;
+        color: $color-text-muted;
+        font-size: 0.875rem;
+        font-weight: 600;
+
+        &-label {
+            @include flex-center;
+            gap: $space-sm;
+            color: $color-primary;
+
+            &-icon {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &__content {
+        margin-top: $space-md;
+        @include flex-col;
+        gap: $space-md;
+    }
+
+    &__text {
+        background: rgba($color-primary, 0.07);
+        border: 1px solid rgba($color-primary, 0.2);
+        border-radius: $radius-md;
+        padding: $space-md;
+        font-size: 0.875rem;
+        line-height: 1.7;
+        color: $color-text;
+    }
+
+    &__loading {
+        @include flex-center;
+        gap: $space-sm;
+        color: $color-text-muted;
+        font-size: 0.875rem;
+        padding: $space-md;
+    }
+
+    &__error {
+        color: $color-error;
+        font-size: 0.85rem;
+    }
+}

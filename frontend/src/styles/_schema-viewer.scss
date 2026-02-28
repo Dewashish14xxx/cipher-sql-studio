@@ -1,0 +1,132 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.schema-viewer {
+    border-bottom: 1px solid $color-border;
+
+    &__header {
+        @include flex-between;
+        padding: $space-md $space-lg;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $color-text-dim;
+        background: rgba($color-surface-2, 0.5);
+    }
+
+    &__table {
+        border-top: 1px solid rgba($color-border, 0.5);
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+
+        &.is-open {
+            max-height: 600px;
+        }
+
+        &.is-closed {
+            max-height: 0;
+        }
+    }
+
+    &__table-header {
+        @include flex-between;
+        padding: $space-sm $space-lg;
+        cursor: pointer;
+        background: $color-surface;
+        border-top: 1px solid rgba($color-border, 0.5);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: $color-text;
+        transition: background 0.15s ease;
+
+        &:hover {
+            background: $color-surface-2;
+        }
+    }
+
+    &__table-name {
+        @include flex-center;
+        gap: $space-sm;
+
+        &-icon {
+            color: $color-accent;
+            font-size: 0.85rem;
+        }
+    }
+
+    &__table-toggle {
+        color: $color-text-muted;
+        font-size: 0.8rem;
+    }
+
+    &__cols {
+        @include flex-col;
+        background: $color-bg;
+    }
+
+    &__col {
+        @include flex-between;
+        padding: $space-xs $space-lg $space-xs calc(#{$space-lg} + 20px);
+        font-size: 0.78rem;
+        border-bottom: 1px solid rgba($color-border, 0.3);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__col-name {
+        font-family: $font-mono;
+        color: $color-text;
+    }
+
+    &__col-type {
+        font-family: $font-mono;
+        color: $color-accent;
+        font-size: 0.72rem;
+    }
+
+    &__col-pk {
+        font-size: 0.65rem;
+        background: rgba($color-warning, 0.15);
+        color: $color-warning;
+        border-radius: $radius-sm;
+        padding: 1px $space-xs;
+        margin-left: $space-xs;
+    }
+
+    &__sample-data {
+        padding: $space-sm $space-md;
+        overflow-x: auto;
+        @include custom-scrollbar;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.73rem;
+
+            th {
+                padding: $space-xs $space-sm;
+                text-align: left;
+                font-weight: 600;
+                color: $color-text-muted;
+                background: $color-surface;
+                border-bottom: 1px solid $color-border;
+                white-space: nowrap;
+            }
+
+            td {
+                padding: $space-xs $space-sm;
+                color: $color-text;
+                font-family: $font-mono;
+                border-bottom: 1px solid rgba($color-border, 0.3);
+                white-space: nowrap;
+            }
+
+            tr:last-child td {
+                border-bottom: none;
+            }
+        }
+    }
+}

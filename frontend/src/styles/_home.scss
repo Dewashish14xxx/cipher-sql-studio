@@ -1,0 +1,190 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.home-page {
+    @include flex-col;
+    min-height: calc(100vh - 65px);
+
+    &__hero {
+        @include flex-col;
+        @include flex-center;
+        text-align: center;
+        padding: $space-2xl $space-lg $space-xl;
+        background: linear-gradient(180deg, rgba($color-primary, 0.05) 0%, transparent 100%);
+        gap: $space-md;
+        border-bottom: 1px solid $color-border;
+    }
+
+    &__hero-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: $color-primary;
+        background: rgba($color-primary, 0.1);
+        border: 1px solid rgba($color-primary, 0.25);
+        border-radius: $radius-full;
+        padding: $space-xs $space-md;
+    }
+
+    &__hero-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: $color-text;
+        max-width: 500px;
+
+        span {
+            background: linear-gradient(135deg, $color-primary, $color-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @include respond-to(sm) {
+            font-size: 2.2rem;
+        }
+
+        @include respond-to(md) {
+            font-size: 2.6rem;
+        }
+    }
+
+    &__hero-sub {
+        font-size: 0.925rem;
+        color: $color-text-muted;
+        max-width: 420px;
+        line-height: 1.65;
+
+        @include respond-to(sm) {
+            font-size: 1rem;
+        }
+    }
+
+    &__stats {
+        @include flex-center;
+        gap: $space-lg;
+        flex-wrap: wrap;
+        margin-top: $space-sm;
+    }
+
+    &__stat {
+        @include flex-col;
+        align-items: center;
+        gap: $space-xs / 2;
+    }
+
+    &__stat-value {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: $color-text;
+    }
+
+    &__stat-label {
+        font-size: 0.75rem;
+        color: $color-text-dim;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    &__content {
+        padding: $space-xl $space-lg;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+
+        @include respond-to(lg) {
+            padding: $space-2xl $space-xl;
+        }
+    }
+
+    &__section-header {
+        @include flex-between;
+        margin-bottom: $space-lg;
+        flex-wrap: wrap;
+        gap: $space-sm;
+    }
+
+    &__section-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-text;
+        @include flex-center;
+        gap: $space-sm;
+
+        @include respond-to(sm) {
+            font-size: 1.1rem;
+        }
+    }
+
+    &__filter {
+        display: flex;
+        gap: $space-xs;
+    }
+
+    &__filter-btn {
+        padding: $space-xs $space-md;
+        border-radius: $radius-full;
+        border: 1px solid $color-border;
+        background: transparent;
+        color: $color-text-muted;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &.active,
+        &:hover {
+            background: $color-primary;
+            border-color: $color-primary;
+            color: white;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-md;
+
+        @include respond-to(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include respond-to(md) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__loading {
+        @include flex-col;
+        @include flex-center;
+        gap: $space-md;
+        padding: $space-2xl;
+        color: $color-text-muted;
+    }
+
+    &__error {
+        @include flex-col;
+        @include flex-center;
+        gap: $space-sm;
+        padding: $space-2xl;
+        color: $color-error;
+        text-align: center;
+    }
+}
+
+// Spinner
+.spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid $color-border;
+    border-top-color: $color-primary;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,49 @@
+// Color Palette
+$color-bg: #0d0e1a;
+$color-bg-2: #12142a;
+$color-surface: #1a1d35;
+$color-surface-2: #222645;
+$color-border: #2e3260;
+$color-primary: #7c6af7;
+$color-primary-hover: #9585ff;
+$color-primary-glow: rgba(124, 106, 247, 0.18);
+$color-accent: #00d4aa;
+$color-accent-hover: #00f0c0;
+$color-text: #e8eaff;
+$color-text-muted: #9094c0;
+$color-text-dim: #555980;
+$color-success: #22d3a8;
+$color-error: #f4607a;
+$color-warning: #f5a623;
+$color-easy: #22d3a8;
+$color-medium: #f5a623;
+$color-hard: #f4607a;
+
+// Spacing
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 48px;
+
+// Border Radius
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-full: 9999px;
+
+// Breakpoints
+$bp-sm: 640px;
+$bp-md: 1024px;
+$bp-lg: 1280px;
+
+// Typography
+$font-base: 'Inter', 'Segoe UI', system-ui, sans-serif;
+$font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+$shadow-glow: 0 0 24px $color-primary-glow;

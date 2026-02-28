@@ -1,0 +1,66 @@
+@import 'variables';
+@import 'mixins';
+
+// Reset & base
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-base;
+    background: $color-bg;
+    color: $color-text;
+    min-height: 100vh;
+    line-height: 1.6;
+    @include custom-scrollbar;
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+    line-height: 1.25;
+    color: $color-text;
+}
+
+code,
+pre {
+    font-family: $font-mono;
+}
