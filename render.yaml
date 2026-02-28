@@ -2,12 +2,13 @@ services:
   - type: web
     name: cipher-sql-backend
     env: node
-    nodeVersion: 18
     plan: free
     rootDir: backend
     buildCommand: npm install
     startCommand: npm start
     envVars:
+      - key: NODE_VERSION
+        value: "18"
       - key: NODE_ENV
         value: production
       - key: PORT
