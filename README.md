@@ -1,5 +1,8 @@
 # CipherSQLStudio
 
+**🌟 Live Demo:** [https://cipher-sql-studio-tawny.vercel.app](https://cipher-sql-studio-tawny.vercel.app)  
+*(Backend API: [https://cipher-sql-backend.onrender.com](https://cipher-sql-backend.onrender.com))*
+
 > A browser-based SQL learning platform where students practice SQL queries against pre-configured assignments with real-time execution and AI-powered hints.
 
 ## Tech Stack
